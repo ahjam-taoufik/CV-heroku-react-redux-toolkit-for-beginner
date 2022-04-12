@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { toggleCounter } from './ToggleSlice';
 
 
 const initStat = { count: 0} ;
@@ -13,8 +14,17 @@ const initStat = { count: 0} ;
         decrease: (state, action) => {
             state.count -= action.payload;
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(toggleCounter, (state, action) => {
+                state.count = action.payload;
+            })
+        
+        }
+
 });
+
+
 
 export const {increase,decrease}=counterSlice.actions;
 

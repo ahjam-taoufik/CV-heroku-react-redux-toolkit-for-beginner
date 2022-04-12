@@ -8,7 +8,7 @@ const toggleSlice= createSlice({
     name: 'toggle',
     initialState: initState,
     reducers: { 
-        toggleCounter: (state, action) => {
+        toggleCounter: (state) => {
             state.chowCounter = !state.chowCounter;
         }
     }

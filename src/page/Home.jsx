@@ -33,7 +33,7 @@ useEffect(() => {
 
 
   const toggleCounterr = () => {
-    dispatch(toggleCounter());
+    dispatch(toggleCounter(5));
   };
   
 
