@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { decrease, increase,toggleCounter } from '../context/redux/CounterReducer';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,26 +17,34 @@ const Home = () => {
   const Counter = useSelector((state) => state);
 
 
-  const handleAction = (type, number) => {
-    dispatch({ type: type, payload: { val: number } });
+  const handleAction = (type,val) => {
+     if(type==='inc'){
+        dispatch(increase(val));
+     }
+     if(type==='dec'){
+        dispatch(decrease(val));
+     }
+    
   };
 
-  const toggleCounter = () => {
-    dispatch({ type: 'TOGGLE_COUNTER' });
+
+  const toggleCounterr = () => {
+    dispatch(toggleCounter() );
   };
 
   return (
     <>
       <div>Home Page</div>
-      <button onClick={toggleCounter}>toggle</button>
+      <button onClick={toggleCounterr}>toggle</button>
+
       {Counter.chowCounter && (
         <div>
 
           <p>{conditionshow(Counter.count)}</p>
 
-          <button onClick={() => handleAction('INCREASE', 2)}>+</button>
+          <button onClick={() => handleAction('inc', 1)}>+</button>
 
-          <button onClick={() => handleAction('DECREASE', 2)}>-</button>
+          <button onClick={() => handleAction('dec', 1)}>-</button>
         </div>
       )}
     </>
