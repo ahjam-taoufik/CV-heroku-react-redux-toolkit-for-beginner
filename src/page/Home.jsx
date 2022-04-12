@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrease, increase,toggleCounter } from '../context/redux/CounterReducer';
+import { decrease, increase} from '../context/redux/CounterSlice';
+import { toggleCounter } from '../context/redux/ToggleSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,8 @@ const Home = () => {
   }
 
 
-  const Counter = useSelector((state) => state);
-
+  const stats = useSelector((state) => state);
+ 
 
   const handleAction = (type,val) => {
      if(type==='inc'){
@@ -37,10 +38,10 @@ const Home = () => {
       <div>Home Page</div>
       <button onClick={toggleCounterr}>toggle</button>
 
-      {Counter.chowCounter && (
+      {stats.toggle.chowCounter && (
         <div>
 
-          <p>{conditionshow(Counter.count)}</p>
+          <p>{conditionshow(stats.Counter.count)}</p>
 
           <button onClick={() => handleAction('inc', 1)}>+</button>
 
