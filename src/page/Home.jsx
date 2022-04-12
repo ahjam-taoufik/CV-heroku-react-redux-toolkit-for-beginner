@@ -2,43 +2,40 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
-  const count = useSelector((state) =>{
-      if(state.count===0){
-        return 'zero'
-      }
-      
-      return state.count;
-     });
-
-
-  const showCounter = useSelector((state) => state.chowCounter);
-
-  console.log(showCounter);
-
   const dispatch = useDispatch();
 
-  const increase = () => {
-    dispatch({ type: 'INCREASE', payload: { val: 1 } });
+
+  const conditionshow=(value)=>{
+      if (value === 0) {
+        return 'zero';
+      }
+      return value;
+  }
+
+
+  const Counter = useSelector((state) => state);
+
+
+  const handleAction = (type, number) => {
+    dispatch({ type: type, payload: { val: number } });
   };
 
-  const decrease = () => {
-    dispatch({ type: 'DECREASE', payload: { val: 1 } });
-  };
-
-    const toggleCounter = () => {
+  const toggleCounter = () => {
     dispatch({ type: 'TOGGLE_COUNTER' });
-    };
-
+  };
 
   return (
     <>
       <div>Home Page</div>
       <button onClick={toggleCounter}>toggle</button>
-      {showCounter && (
+      {Counter.chowCounter && (
         <div>
-          <p>{count}</p>
-          <button onClick={increase}>+</button>
-          <button onClick={decrease}>-</button>
+
+          <p>{conditionshow(Counter.count)}</p>
+
+          <button onClick={() => handleAction('INCREASE', 2)}>+</button>
+
+          <button onClick={() => handleAction('DECREASE', 2)}>-</button>
         </div>
       )}
     </>
