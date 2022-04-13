@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "J.R.R. Tolkien",
+      "description": "Fantasy",
+      "price": 295
+    },
+    {
+      "id": 2,
+      "title": "J.K. Rowling",
+      "description": "Fantasy",
+      "price": 295
+    },
+    {
+      "id": 3,
+      "title": "Stephen King",
+      "description": "Horror",
+      "price": 295
+    }
+  ]
+}
